@@ -8,6 +8,7 @@ class GatewayApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// 스프링 컨텍스트 로드 테스트
 	}
 
 }

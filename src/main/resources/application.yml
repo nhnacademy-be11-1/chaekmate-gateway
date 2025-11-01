@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: chaekmate-gateway
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+

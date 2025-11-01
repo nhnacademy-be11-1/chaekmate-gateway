@@ -1,0 +1,9 @@
+# prod 포트는 배포 설명 확인
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL}
+
+logging:
+  level:
+    root: info
