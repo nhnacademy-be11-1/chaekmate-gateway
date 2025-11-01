@@ -2,6 +2,14 @@ spring:
   application:
     name: chaekmate-gateway
 
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true # 유레카 등록 이름으로 서버 찾기
+
 eureka:
   client:
     fetch-registry: true
