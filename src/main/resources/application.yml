@@ -12,10 +12,20 @@ spring:
               predicates:
                 - Path=/auth/**
 
+            - id: chaekmate-batch
+              uri: lb://chaekmate-batch
+              predicates:
+                - Path=/batch/**
+
             - id: chaekmate-core
               uri: lb://chaekmate-core
               predicates:
                 - Path=/core/**
+
+            - id: chaekmate-coupon
+              uri: lb://chaekmate-coupon
+              predicates:
+                - Path=/coupon/**
 
             - id: chaekmate-search
               uri: lb://chaekmate-search
