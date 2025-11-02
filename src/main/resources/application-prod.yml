@@ -1,8 +1,14 @@
-# prod 포트는 배포 설명 확인
+# Gateway/Target Server Port (prod) : "배포설명" 확인
+
+# Gateway Server Port
+server:
+  port: ${PORT_NUMBER}
+
+# Target Server (Eureka Server) URL
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL}
+      defaultZone: ${EUREKA_URL_PROD}
 
 logging:
   level:

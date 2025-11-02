@@ -1,7 +1,9 @@
+# Gateway Server Port
 server:
   port: 8080
 
+# Target Server (Eureka Server) URL
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+      defaultZone: http://chaekmate:1234@localhost:8761/eureka

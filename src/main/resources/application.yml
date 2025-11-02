@@ -6,13 +6,34 @@ spring:
     gateway:
       server:
         webflux:
-          discovery:
-            locator:
-              enabled: true # 유레카 등록 이름으로 서버 찾기
+          routes:
+            - id: chaekmate-auth
+              uri: lb://chaekmate-auth
+              predicates:
+                - Path=/auth/**
+
+            - id: chaekmate-core
+              uri: lb://chaekmate-core
+              predicates:
+                - Path=/core/**
+
+            - id: chaekmate-search
+              uri: lb://chaekmate-search
+              predicates:
+                - Path=/search/**
+
 
 eureka:
   client:
-    fetch-registry: true
     register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
 
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
