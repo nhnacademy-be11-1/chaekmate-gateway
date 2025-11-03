@@ -2,6 +2,7 @@ spring:
   application:
     name: chaekmate-gateway
 
+# 추후 라우팅 경로 수정 필요
   cloud:
     gateway:
       server:
@@ -20,7 +21,18 @@ spring:
             - id: chaekmate-core
               uri: lb://chaekmate-core
               predicates:
-                - Path=/core/**
+                - Path=/books/**
+                - Path=/categories/**
+                - Path=/tags/**
+                - Path=/wrappers/**
+
+            - id: chaekmate-core-admin
+              uri: lb://chaekmate-core
+              predicates:
+                - Path=/admin/books/**
+                - Path=/admin/categories/**
+                - Path=/admin/tags/**
+                - Path=/admin/wrappers/**
 
             - id: chaekmate-coupon
               uri: lb://chaekmate-coupon
