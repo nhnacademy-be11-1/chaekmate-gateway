@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: chaekmate-gateway
+
+# 추후 라우팅 경로 수정 필요
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: chaekmate-auth
+              uri: lb://chaekmate-auth
+              predicates:
+                - Path=/auth/**
+
+            - id: chaekmate-batch
+              uri: lb://chaekmate-batch
+              predicates:
+                - Path=/batch/**
+
+            - id: chaekmate-core
+              uri: lb://chaekmate-core
+              predicates:
+                - Path=/books, /books/**, /categories, /categories/**, /delivery-policy, /likes, /likes/**, /members, /members/**, /point-policies, /point-policies/**, /tags, /tags/**, /wrappers, /wrappers/**
+
+            - id: chaekmate-core-admin
+              uri: lb://chaekmate-core
+              predicates:
+                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy, /admin/point-policies, /admin/point-policies/**, /admin/tags/**, /admin/wrappers, /admin/wrappers/**
+
+            - id: chaekmate-coupon
+              uri: lb://chaekmate-coupon
+              predicates:
+                - Path=/coupon/**
+
+            - id: chaekmate-search
+              uri: lb://chaekmate-search
+              predicates:
+                - Path=/search/**
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
