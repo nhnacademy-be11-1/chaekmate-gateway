@@ -21,12 +21,12 @@ spring:
             - id: chaekmate-core
               uri: lb://chaekmate-core
               predicates:
-                - Path=/books, /books/**, /categories, /categories/**, /delivery-policy, /likes, /likes/**, /members, /members/**, /point-policies, /point-policies/**, /tags, /tags/**, /wrappers, /wrappers/**
+                - Path=/books, /books/**, /categories, /categories/**, /delivery-policy, /likes, /likes/**, /members, /members/**, /point-policy, /point-policy/**, /tags, /tags/**, /wrappers, /wrappers/**
 
             - id: chaekmate-core-admin
               uri: lb://chaekmate-core
               predicates:
-                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy, /admin/point-policies, /admin/point-policies/** /admin/tags/**, /admin/wrappers, /admin/wrappers/**
+                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy, /admin/point-policy/**, /admin/tags/**, /admin/wrappers/**
 
             - id: chaekmate-coupon
               uri: lb://chaekmate-coupon
