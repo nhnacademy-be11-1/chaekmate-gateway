@@ -86,5 +86,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             export DOMAIN="${{ env.DOMAIN }}"
-            export PORT="${{ env.PORT }}"
+            export PORT="${{ env.PORT_NUMBER }}"
             bash -lc ./startup.sh
