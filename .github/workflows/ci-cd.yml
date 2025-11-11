@@ -14,7 +14,7 @@ jobs:
     env:
       SPRING_PROFILES_ACTIVE: prod
       DOMAIN: ${{ secrets.DOMAIN_NAME }}
-      PORT: ${{ secrets.PORT_NUMBER }}
+      PORT_NUMBER: ${{ secrets.PORT_NUMBER }}
       EUREKA_URL_PROD: ${{ secrets.EUREKA_URL_PROD }}
 
     steps:
@@ -86,5 +86,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             export DOMAIN="${{ env.DOMAIN }}"
-            export PORT="${{ env.PORT }}"
+            export PORT_NUMBER="${{ env.PORT_NUMBER }}"
+            export EUREKA_URL_PROD="${{ secrets.EUREKA_URL_PROD }}"
             bash -lc ./startup.sh
