@@ -21,7 +21,7 @@ spring:
             - id: chaekmate-core
               uri: lb://chaekmate-core
               predicates:
-                - Path=/books/**, /categories/**, /delivery-policy/**, /likes/**, /members/**, /point-policies/**, /tags/**, /wrappers/**, /payments/**
+                - Path=/books/**, /carts/**, /categories/**, /delivery-policy/**, /likes/**, /members/**, /point-policies/**, /tags/**, /wrappers/**, /payments/**
 
             - id: chaekmate-core-admin
               uri: lb://chaekmate-core
