@@ -21,17 +21,17 @@ spring:
             - id: chaekmate-core
               uri: lb://chaekmate-core
               predicates:
-                - Path=/books/**, /categories/**, /delivery-policy/**, /likes/**, /members/**, /point-policies/**, /tags/**, /wrappers/**, /payments/**
+                - Path=/books/**, /carts/**, /categories/**, /delivery-policy/**, /likes/**, /members/**, /point-policies/**, /tags/**, /wrappers/**, /payments/**, /orders/**
 
             - id: chaekmate-core-admin
               uri: lb://chaekmate-core
               predicates:
-                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy/** , /admin/point-policies/**, /admin/tags/**, /admin/wrappers/**, /admin/point-histories/**
+                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy/** , /admin/point-policies/**, /admin/tags/**, /admin/wrappers/**, /admin/point-histories/**, /admin/grades/**
 
             - id: chaekmate-coupon
               uri: lb://chaekmate-coupon
               predicates:
-                - Path=/coupon/**
+                - Path=/coupon/**, /admin/coupon-policies/**
 
             - id: chaekmate-search
               uri: lb://chaekmate-search
