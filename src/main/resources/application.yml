@@ -31,7 +31,7 @@ spring:
             - id: chaekmate-coupon
               uri: lb://chaekmate-coupon
               predicates:
-                - Path=/coupon/**, /admin/coupon-policies/**
+                - Path=/coupon/**,/admin/coupon-policies/**,/coupon-policies/**,/issued-coupons/**
 
             - id: chaekmate-search
               uri: lb://chaekmate-search
