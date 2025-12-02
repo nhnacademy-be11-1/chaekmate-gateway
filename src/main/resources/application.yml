@@ -2,7 +2,7 @@ spring:
   application:
     name: chaekmate-gateway
 
-# 추후 라우팅 경로 수정 필요
+  # 추후 라우팅 경로 수정 필요
   cloud:
     gateway:
       server:
@@ -31,7 +31,7 @@ spring:
             - id: chaekmate-coupon
               uri: lb://chaekmate-coupon
               predicates:
-                - Path=/coupon/**, /admin/coupon-policies/**
+                - Path=/coupon/**, /admin/coupon-policies/**, /issued-coupons/**
 
             - id: chaekmate-search
               uri: lb://chaekmate-search
