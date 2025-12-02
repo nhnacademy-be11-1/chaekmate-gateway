@@ -1,9 +1,13 @@
 spring:
   application:
     name: chaekmate-gateway
+  config:
+    import: "optional:configserver:"
 
   # 추후 라우팅 경로 수정 필요
   cloud:
+    config:
+      enabled: false # Config 서버 사용 비활성화
     gateway:
       server:
         webflux:
@@ -43,19 +47,19 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    registry-fetch-interval-seconds: 5
+    registry-fetch-interval-seconds: 30
 
     healthcheck:
       enabled: true
 
   instance:
     prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
 
 
 management:
   endpoints:
     web:
       exposure:
-        include: health, info
+        include: "*"
