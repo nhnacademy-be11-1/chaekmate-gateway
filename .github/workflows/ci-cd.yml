@@ -88,4 +88,4 @@ jobs:
             export DOMAIN_NAME="${{ secrets.DOMAIN_NAME }}"
             export PORT_NUMBER="${{ secrets.PORT_NUMBER }}"
             export EUREKA_URL_PROD="${{ secrets.EUREKA_URL_PROD }}"
-            bash -lc ./startup.sh
+            bash -lc ./startup-single.sh
