@@ -13,3 +13,9 @@ spring:
         service-id: chaekmate-config    # Eureka 서비스 이름
       fail-fast: true # Config server 못찾을시 중단
 
+# 유레카 사용
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL_PROD}
+
