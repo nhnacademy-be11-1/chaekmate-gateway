@@ -82,6 +82,13 @@
             <version>8.0</version>
         </dependency>
 
+        <!-- 행동 추적 로깅 -->
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-spring-boot-starter</artifactId>
+            <version>2.22.0</version>
+        </dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
