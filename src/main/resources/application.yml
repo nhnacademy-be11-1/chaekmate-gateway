@@ -69,5 +69,11 @@ management:
   info:
     env:
       enabled: true
+  metrics:
+    enable:
+      all: true
+  tracing:
+    enabled: true
+
 info:
   instanceId: ${spring.application.name}:${server.port}
