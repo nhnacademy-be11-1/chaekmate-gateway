@@ -35,11 +35,7 @@
             <file>${LOG_HOME}/${DOMAIN_NAME}.log</file>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder">
                 <customFields>{"chaekmate-service":"gateway"}</customFields>
-                <includeMdcKeyNames>
-                    traceId
-                    spanId
-                    userId
-                </includeMdcKeyNames>
+                <includeMdcKeyNames>traceId,spanId,userId</includeMdcKeyNames>
             </encoder>
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <fileNamePattern>${LOG_HOME}/${DOMAIN_NAME}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
