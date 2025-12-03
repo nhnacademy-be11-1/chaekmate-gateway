@@ -32,7 +32,7 @@
     <!-- prod profile: stdout + JSON 파일 -->
     <springProfile name="prod">
         <property name="LOG_HOME" value="/home/backend/be11-team1/logging/logs/gateway"/>
-        <property name="DOMAIN_NAME" value="gateway"/>
+        <property name="DOMAIN_NAME" value="gateway-${server.port}"/>
 
         <appender name="JSON_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <file>${LOG_HOME}/${DOMAIN_NAME}.log</file>
