@@ -18,4 +18,15 @@ eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_URL_PROD}
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
+
+    healthcheck:
+      enabled: true
+
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
 
