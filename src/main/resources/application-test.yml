@@ -1,0 +1,21 @@
+spring:
+# Spring Cloud Config Client 비활성화
+  cloud:
+    config:
+      enabled: false
+      uri: ""     # 혹시모를 자동접속 방지
+      fail-fast: false
+
+# Eureka Client 비활성화
+eureka:
+  client:
+    enabled: false  # Spring Boot 3.x 기준
+    register-with-eureka: false
+    fetch-registry: false
+
+# Actuator 정보 보안 (옵션)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

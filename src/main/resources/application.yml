@@ -1,9 +1,13 @@
 spring:
   application:
     name: chaekmate-gateway
+  config:
+    import: "optional:configserver:"
 
-# 추후 라우팅 경로 수정 필요
+  # 추후 라우팅 경로 수정 필요
   cloud:
+    config:
+      enabled: false # Config 서버 사용 비활성화
     gateway:
       server:
         webflux:
@@ -21,17 +25,17 @@ spring:
             - id: chaekmate-core
               uri: lb://chaekmate-core
               predicates:
-                - Path=/books/**, /carts/**, /categories/**, /delivery-policy/**, /likes/**, /members/**, /point-policies/**, /tags/**, /wrappers/**, /payments/**, /orders/**
+                - Path=/books/**, /carts/**, /categories/**, /delivery-policy/**, /likes/**, /members/**, /point-policies/**, /tags/**, /wrappers/**, /payments/**, /orders/**, /reviews/**
 
             - id: chaekmate-core-admin
               uri: lb://chaekmate-core
               predicates:
-                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy/** , /admin/point-policies/**, /admin/tags/**, /admin/wrappers/**, /admin/point-histories/**, /admin/members/**
+                - Path=/admin/books/**, /admin/categories/**, /admin/delivery-policy/**, /admin/point-policies/**, /admin/tags/**, /admin/wrappers/**, /admin/point-histories/**, /admin/grades/**, /admin/orders/**, /admin/ordered-books/**, /admin/payments/return-approve/**, /admin/members/**
 
             - id: chaekmate-coupon
               uri: lb://chaekmate-coupon
               predicates:
-                - Path=/coupon/**
+                - Path=/coupon/**, /admin/coupon-policies/**, /coupon-policies/**, /issued-coupons/**
 
             - id: chaekmate-search
               uri: lb://chaekmate-search
@@ -43,13 +47,33 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+    registry-fetch-interval-seconds: 30
+
+    healthcheck:
+      enabled: true
 
   instance:
     prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
 
 
 management:
   endpoints:
     web:
       exposure:
-        include: health, info
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+  metrics:
+    enable:
+      all: true
+  tracing:
+    enabled: true
+
+info:
+  instanceId: ${spring.application.name}:${server.port}
