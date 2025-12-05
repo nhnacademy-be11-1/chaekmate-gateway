@@ -1,15 +1,32 @@
-# Gateway/Target Server Port (prod) : "배포설명" 확인
+# Config 사용
+spring:
+  config:
+    import: "optional:configserver:"    # configserver import 활성화
 
-# Gateway Server Port
-server:
-  port: ${PORT_NUMBER}
+  cloud:
+    config:
+      enabled: true
+      profile: prod # config-repo의 prod 프로필 사용
+      label: main   # config-repo 의 main 브랜치 사용
+      discovery:
+        enabled: true                   # Eureka를 통해 Config Server 찾기
+        service-id: chaekmate-config    # Eureka 서비스 이름
+      fail-fast: true # Config server 못찾을시 중단
 
-# Target Server (Eureka Server) URL
+# 유레카 사용
 eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_URL_PROD}
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
 
-logging:
-  level:
-    root: info
+    healthcheck:
+      enabled: true
+
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+
